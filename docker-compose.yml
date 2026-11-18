@@ -1,0 +1,20 @@
+# Сайт + база одной командой на VPS: docker compose up -d --build
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: grooming
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_DB: grooming
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://grooming:${POSTGRES_PASSWORD:-change-me}@db:5432/grooming
+    ports: ["3000:3000"]
+    depends_on: [db]
+volumes:
+  pgdata:

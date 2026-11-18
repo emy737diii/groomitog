@@ -1,0 +1,36 @@
+{
+  "name": "grooming-salon",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "db:migrate": "node --env-file=.env scripts/migrate.mjs",
+    "admin:password": "node --env-file=.env scripts/set-password.mjs",
+    "telegram:webhook": "node --env-file=.env scripts/set-webhook.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "postgres": "^3.4.5",
+    "zod": "^3.24.1",
+    "sharp": "^0.33.5",
+    "three": "^0.172.0",
+    "@react-three/fiber": "^9.0.0",
+    "@react-three/drei": "^10.0.0",
+    "three-stdlib": "^2.35.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.172.0"
+  },
+  "engines": {
+    "node": ">=20.6"
+  }
+}
